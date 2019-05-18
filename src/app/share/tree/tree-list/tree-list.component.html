@@ -1,0 +1,23 @@
+<div class="tree_list">
+  <div class="list_item" *ngFor="let item of item?.children">
+    <div>
+      <div class="title">
+        
+        <div>
+          <i *ngIf="item.children" class="material-icons" (click)="item.open=!item.open">
+            {{item.open?'arrow_drop_down':'arrow_right'}}
+          </i>
+        </div>
+        <div>
+            <mat-checkbox [(ngModel)]="item.checked" [(indeterminate)]="item.indeterminate" (change)="check_state(item)"></mat-checkbox>
+        </div>
+
+        <div class="desc">{{item.title}}</div>
+        <div>
+            <i class="material-icons closr_btn">close</i>
+        </div>
+      </div>
+    </div>
+    <app-tree-item [item]="item" *ngIf="item.open && item.children"></app-tree-item>
+  </div>
+</div>
